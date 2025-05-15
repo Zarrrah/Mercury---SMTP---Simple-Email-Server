@@ -1,5 +1,6 @@
 package com.couture.mercury.core.commands;
 
+import com.couture.mercury.core.commands.validation.ValidationResult;
 import com.couture.mercury.core.session.SessionState;
 
 /**

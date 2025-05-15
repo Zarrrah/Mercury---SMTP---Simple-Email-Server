@@ -1,4 +1,4 @@
-package com.couture.mercury.core.commands;
+package com.couture.mercury.core.commands.validation;
 
 import java.util.ArrayList;
 import java.util.List;

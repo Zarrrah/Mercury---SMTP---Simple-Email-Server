@@ -1,5 +1,7 @@
 package com.couture.mercury.core.commands;
 
+import com.couture.mercury.core.commands.validation.ValidationResult;
+
 import java.io.Serializable;
 
 /**
@@ -28,4 +30,11 @@ public interface SmtpCommand extends Serializable {
      * @return SmtpCommandType representing the command.
      */
     SmtpCommandType getCommandType();
+
+    /**
+     * Retrieves the parameters of this command.
+     *
+     * @return Array of command parameters, never null but may be empty.
+     */
+    String[] getParameters();
 }
