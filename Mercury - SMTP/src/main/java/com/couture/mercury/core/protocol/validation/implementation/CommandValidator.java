@@ -56,7 +56,7 @@ public final class CommandValidator {
      * @param context The current session context.
      * @return Validation result indicating success or failure with error details.
      */
-    public ValidationResult validate(Command command, SessionContext context) {
+    public static ValidationResult validate(Command command, SessionContext context) {
         if (command == null) {
             LOGGER.warn("Null command provided for validation");
             return ValidationResultFactory.nullCommand();
