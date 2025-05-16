@@ -1,9 +1,9 @@
 package com.couture.mercury.core.tests.commands.validation;
 
-import com.couture.mercury.core.commands.SmtpCommandType;
-import com.couture.mercury.core.commands.validation.ValidationResult;
+import com.couture.mercury.core.protocol.commands.CommandType;
+import com.couture.mercury.core.protocol.validation.result.ValidationResult;
+import com.couture.mercury.core.mocks.MockCommand;
 import com.couture.mercury.core.mocks.MockSessionContext;
-import com.couture.mercury.core.mocks.MockSmtpCommand;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
@@ -89,7 +89,7 @@ public abstract class CommandValidatorTestBase {
      * @param parameters The command parameters.
      * @return A mock command.
      */
-    protected MockSmtpCommand createMockCommand(SmtpCommandType commandType, String... parameters){
-        return new MockSmtpCommand(commandType, parameters);
+    protected MockCommand createMockCommand(CommandType commandType, String... parameters){
+        return new MockCommand(commandType, parameters);
     }
 }

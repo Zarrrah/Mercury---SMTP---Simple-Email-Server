@@ -1,7 +1,7 @@
 package com.couture.mercury.core.mocks;
 
-import com.couture.mercury.core.session.SessionContext;
-import com.couture.mercury.core.session.SessionState;
+import com.couture.mercury.core.protocol.session.SessionContext;
+import com.couture.mercury.core.protocol.session.SessionState;
 
 import java.util.HashMap;
 import java.util.Map;

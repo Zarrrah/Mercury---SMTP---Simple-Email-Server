@@ -1,10 +1,10 @@
 package com.couture.mercury.core.tests.commands.validation;
 
-import com.couture.mercury.core.commands.SmtpCommandType;
-import com.couture.mercury.core.commands.validation.ValidationResult;
-import com.couture.mercury.core.commands.validation.implementation.HeloCommandValidator;
-import com.couture.mercury.core.mocks.MockSmtpCommand;
-import com.couture.mercury.core.session.SessionState;
+import com.couture.mercury.core.protocol.commands.CommandType;
+import com.couture.mercury.core.protocol.validation.result.ValidationResult;
+import com.couture.mercury.core.protocol.validation.implementation.HeloCommandValidator;
+import com.couture.mercury.core.mocks.MockCommand;
+import com.couture.mercury.core.protocol.session.SessionState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +29,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     public void testValidHeloInConnectState(){
         // Arrange
         m_sessionContext.setState(SessionState.CONNECT);
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO, "example.com");
+        MockCommand command = createMockCommand(CommandType.HELO, "example.com");
 
         // Act
         ValidationResult result = m_validator.validate(command,m_sessionContext);
@@ -45,7 +45,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     public void testValidHeloInHeloState(){
         // Arrange
         m_sessionContext.setState(SessionState.HELO);
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO, "example.com");
+        MockCommand command = createMockCommand(CommandType.HELO, "example.com");
 
         // Act
         ValidationResult result = m_validator.validate(command, m_sessionContext);
@@ -61,7 +61,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     public void testHeloInInvalidState(){
         // Arrange
         m_sessionContext.setState(SessionState.MAIL);
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO, "example.com");
+        MockCommand command = createMockCommand(CommandType.HELO, "example.com");
 
         // Act
         ValidationResult result = m_validator.validate(command, m_sessionContext);
@@ -76,7 +76,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     @Test
     public void testHeloWithoutDomain(){
         // Arrange
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO);
+        MockCommand command = createMockCommand(CommandType.HELO);
 
         // Act
         ValidationResult result = m_validator.validate(command, m_sessionContext);
@@ -91,7 +91,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     @Test
     public void testHeloWithInvalidDomain(){
         // Arrange
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO, "invalid@domain");
+        MockCommand command = createMockCommand(CommandType.HELO, "invalid@domain");
 
         // Act
         ValidationResult result = m_validator.validate(command, m_sessionContext);
@@ -106,7 +106,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     @Test
     public void testHeloWithTooManyParameters(){
         // Arrange
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO, "example.com", "extraParam");
+        MockCommand command = createMockCommand(CommandType.HELO, "example.com", "extraParam");
 
         // Act
         ValidationResult result = m_validator.validate(command, m_sessionContext);
@@ -133,7 +133,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
     @Test
     public void testNullSessionContext(){
         // Arrange
-        MockSmtpCommand command = createMockCommand(SmtpCommandType.HELO, "example.com");
+        MockCommand command = createMockCommand(CommandType.HELO, "example.com");
 
         // Act
         ValidationResult result = m_validator.validate(command, null);
