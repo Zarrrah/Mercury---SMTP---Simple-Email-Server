@@ -46,6 +46,8 @@ public class ValidationConstants {
     public static final int DATA_PARAM_COUNT = 0;
     public static final int QUIT_PARAM_COUNT = 0;
     public static final int RSET_PARAM_COUNT = 0;
+    public static final int NOOP_PARAM_COUNT = 0;
+    public static final int VRFY_PARAM_COUNT = 1;
 
     // Special content markers
     public static final String DATA_TERMINATOR = "\r\n.\r\n"; // Terminates DATA command input
@@ -57,8 +59,7 @@ public class ValidationConstants {
     /**
      * Private constructor to prevent instantiation of this utility class.
      */
-    private ValidationConstants()
-    {
+    private ValidationConstants() {
         // This class should not be instantiated
         throw new UnsupportedOperationException("Utility class cannot be instantiated");
     }

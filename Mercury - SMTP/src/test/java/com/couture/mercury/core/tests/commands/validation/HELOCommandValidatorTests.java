@@ -1,38 +1,38 @@
 package com.couture.mercury.core.tests.commands.validation;
 
-import com.couture.mercury.core.protocol.commands.CommandType;
-import com.couture.mercury.core.protocol.validation.result.ValidationResult;
-import com.couture.mercury.core.protocol.validation.implementation.HeloCommandValidator;
 import com.couture.mercury.core.mocks.MockCommand;
+import com.couture.mercury.core.protocol.commands.CommandType;
 import com.couture.mercury.core.protocol.session.SessionState;
+import com.couture.mercury.core.protocol.validation.implementation.HELOCommandValidator;
+import com.couture.mercury.core.protocol.validation.result.ValidationResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests for HeloCommandValidator.
+ * Tests for HELOCommandValidator.
  */
-public class HeloCommandValidatorTests extends CommandValidatorTestBase {
-    private HeloCommandValidator m_validator;
+public class HELOCommandValidatorTests extends CommandValidatorTestBase {
+    private HELOCommandValidator m_validator;
 
     /**
      * Sets up the validator before each test.
      */
     @BeforeEach
-    public void setUp(){
-        m_validator = new HeloCommandValidator();
+    public void setUp() {
+        m_validator = new HELOCommandValidator();
     }
 
     /**
      * Tests that a valid HELO command passes validation in the CONNECT state.
      */
     @Test
-    public void testValidHeloInConnectState(){
+    public void testValidHeloInConnectState() {
         // Arrange
         m_sessionContext.setState(SessionState.CONNECT);
         MockCommand command = createMockCommand(CommandType.HELO, "example.com");
 
         // Act
-        ValidationResult result = m_validator.validate(command,m_sessionContext);
+        ValidationResult result = m_validator.validate(command, m_sessionContext);
 
         // Assert
         assertValidationSuccess(result);
@@ -42,7 +42,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that a valid HELO command passes validation in the HELO state.
      */
     @Test
-    public void testValidHeloInHeloState(){
+    public void testValidHeloInHeloState() {
         // Arrange
         m_sessionContext.setState(SessionState.HELO);
         MockCommand command = createMockCommand(CommandType.HELO, "example.com");
@@ -58,7 +58,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that HELO validation fails in the MAIL state.
      */
     @Test
-    public void testHeloInInvalidState(){
+    public void testHeloInInvalidState() {
         // Arrange
         m_sessionContext.setState(SessionState.MAIL);
         MockCommand command = createMockCommand(CommandType.HELO, "example.com");
@@ -74,7 +74,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that HELO validation fails when no domain is provided.
      */
     @Test
-    public void testHeloWithoutDomain(){
+    public void testHeloWithoutDomain() {
         // Arrange
         MockCommand command = createMockCommand(CommandType.HELO);
 
@@ -89,7 +89,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that HELO validation fails with an invalid domain format.
      */
     @Test
-    public void testHeloWithInvalidDomain(){
+    public void testHeloWithInvalidDomain() {
         // Arrange
         MockCommand command = createMockCommand(CommandType.HELO, "invalid@domain");
 
@@ -104,7 +104,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that HELO validation fails with too many parameters.
      */
     @Test
-    public void testHeloWithTooManyParameters(){
+    public void testHeloWithTooManyParameters() {
         // Arrange
         MockCommand command = createMockCommand(CommandType.HELO, "example.com", "extraParam");
 
@@ -119,7 +119,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that HELO validation fails with a null command.
      */
     @Test
-    public void testNullCommand(){
+    public void testNullCommand() {
         // Act
         ValidationResult result = m_validator.validate(null, m_sessionContext);
 
@@ -131,7 +131,7 @@ public class HeloCommandValidatorTests extends CommandValidatorTestBase {
      * Tests that HELO validation fails with a null session context.
      */
     @Test
-    public void testNullSessionContext(){
+    public void testNullSessionContext() {
         // Arrange
         MockCommand command = createMockCommand(CommandType.HELO, "example.com");
 
