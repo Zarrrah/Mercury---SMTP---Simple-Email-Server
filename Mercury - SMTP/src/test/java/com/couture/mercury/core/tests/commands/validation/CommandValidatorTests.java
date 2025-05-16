@@ -3,7 +3,7 @@ package com.couture.mercury.core.tests.commands.validation;
 import com.couture.mercury.core.mocks.MockCommand;
 import com.couture.mercury.core.protocol.commands.CommandType;
 import com.couture.mercury.core.protocol.session.SessionState;
-import com.couture.mercury.core.protocol.validation.implementation.HELOCommandValidator;
+import com.couture.mercury.core.protocol.validation.implementation.CommandValidator;
 import com.couture.mercury.core.protocol.validation.result.ValidationResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,15 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for HELOCommandValidator.
  */
-public class HELOCommandValidatorTests extends CommandValidatorTestBase {
-    private HELOCommandValidator m_validator;
+public class CommandValidatorTests extends CommandValidatorTestBase {
+    private CommandValidator m_validator;
 
     /**
      * Sets up the validator before each test.
      */
     @BeforeEach
     public void setUp() {
-        m_validator = new HELOCommandValidator();
+        m_validator = new CommandValidator();
     }
 
     /**
