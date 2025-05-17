@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.couture.mercury.core","l":"JUint5SetupTest"},{"p":"com.couture.mercury","l":"Main"}];updateSearchResults();
